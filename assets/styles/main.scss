@@ -1,0 +1,58 @@
+// -------------------------------------------------------------------------
+// Configuratios, imports & modules
+// -------------------------------------------------------------------------
+
+@import "compass";
+
+/* Sprite Setup */
+$spr-layout:smart;
+
+//@import "icons/*.png";
+//@import "util/*.png";
+
+
+// -------------------------------------------------------------------------
+// Variables
+// -------------------------------------------------------------------------
+
+
+// -------------------------------------------------------------------------
+// Imports
+// -------------------------------------------------------------------------
+
+// Global
+@import "global/_global_mediaqueries";
+@import "global/_global_variables";
+@import "global/_global_fonts";
+@import "global/_global_mixins";
+
+
+// Block
+@import "block/_brugskallen";
+@import "block/_panel";
+@import "block/_header";
+@import "block/_cupgame";
+@import "block/_cup";
+@import "block/_slides";
+@import "block/_stage";
+@import "block/_attachment";
+@import "block/_intro";
+@import "block/_game";
+@import "block/_xperiments";
+@import "block/_rte";
+@import "block/_form";
+@import "block/_btn";
+@import "block/_splash";
+@import "block/_spacer";
+@import "block/_justy";
+@import "block/_querynot";
+@import "block/_print";
+
+
+// Vendor
+@import "vendor/_vendor_boilerplate";
+@import "vendor/_vendor_pollutions";
+
+//@import "vendor/_vendor_cookie.politics";
+
+

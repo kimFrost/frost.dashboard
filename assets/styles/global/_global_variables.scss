@@ -1,0 +1,46 @@
+
+/* Global Variables */
+
+// Options booleans
+$mq-useAdaptive: true !global; // Media Querie mixin will skip if this ain't true
+$debug: false !global; // Show debug features
+
+
+
+
+// Colors
+$color_white: #fff;
+$color_black: #000;
+$color_textblack: #000;
+$color_textwhite: #fff;
+
+$color_hearth: #bf343b;
+$color_easter: #ecb619;
+$color_harvest: #fbeb99;
+$color_ash: #575757;
+$color_eggshell: #e3c18b;
+
+
+
+// Media Queries, Labels and Content widths
+@include newMediaQuerie((name: mobile, min-width: 1px, max-width: 767px, contentWidth: 100%, default: true));
+@include newMediaQuerie((name: tablet, min-width: 768px, max-width: 1024px, contentWidth: 560px));
+@include newMediaQuerie((name: desktop, min-width: 1025px, contentWidth: 960px));
+
+
+
+
+// Global font type
+//$font_basic: "Verdane", "Myriad Pro", "Arial", Sans-serif;
+$font_basic: "Arial",  Sans-serif;
+
+$font_HelveticaNeueBlack: 'HelveticaNeueW01-95Blac', $font_basic;
+$font_HelveticaNeueHeavy: 'HelveticaNeueW01-85Heav', $font_basic;
+$font_HelveticaNeueBold: 'HelveticaNeueW01-75Bold', $font_basic;
+$font_HelveticaNeueMedium: 'HelveticaNeueW01-65Medi', $font_basic;
+$font_HelveticaNeueRoman: 'Helvetica Neue LT W06_55 Roman', $font_basic;
+$font_HelveticaNeueRomanLatin: 'HelveticaNeueW01-56It', $font_basic;
+$font_HelveticaNeueLight: 'HelveticaNeueW01-45Ligh', $font_basic;
+$font_HelveticaNeueLightLatin: 'HelveticaNeueW01-46Ligh', $font_basic;
+
+
