@@ -19,108 +19,6 @@
 
 <div id="map" style="height: 100%"></div>
 
-<!--
-<script>
-	var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
-	var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-	var extent = new OpenLayers.Bounds(-1.32,51.71,-1.18,51.80).transform(fromProjection,toProjection);
-	function init() {
-		var options = {
-			restrictedExtent : extent,
-			controls: [
-				new OpenLayers.Control.Navigation(),
-				//new OpenLayers.Control.PanZoomBar(),
-				//new OpenLayers.Control.Attribution()
-			]
-		};
-		var map = new OpenLayers.Map("map", options);
-
-		var newLayer = new OpenLayers.Layer.OSM(
-				"New Layer",
-				"URL_TO_TILES/${z}/${x}/${y}.png",
-				{zoomOffset: 13, resolutions: [19.1092570678711,9.55462853393555,4.77731426696777,2.38865713348389]}
-		);
-		map.addLayer(newLayer);
-		map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0); // 0=relative zoom level
-	}
-</script>
--->
-
-<!--
-<script>
-	var map = new OpenLayers.Map("map");
-	map.addLayer(new OpenLayers.Layer.OSM());
-
-	var pois = new OpenLayers.Layer.Text( "My Points",
-			{ location:"./textfile.txt",
-				projection: map.displayProjection
-			});
-	map.addLayer(pois);
-	// create layer switcher widget in top right corner of map.
-	var layer_switcher= new OpenLayers.Control.LayerSwitcher({});
-	map.addControl(layer_switcher);
-	//Set start centrepoint and zoom
-	var lonLat = new OpenLayers.LonLat( 9.5788, 48.9773 )
-			.transform(
-			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-			map.getProjectionObject() // to Spherical Mercator Projection
-	);
-	var zoom=11;
-	map.setCenter (lonLat, zoom);
-</script>
--->
-
-<!--
-<script>
-	function init() {
-		map = new OpenLayers.Map("map");
-		var mapnik = new OpenLayers.Layer.OSM();
-		map.addLayer(mapnik);
-
-		var lonlat = new OpenLayers.LonLat(-1.788, 53.571).transform(
-			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-			new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator
-		);
-
-		var zoom = 13;
-
-		var markers = new OpenLayers.Layer.Markers( "Markers" );
-		map.addLayer(markers);
-		markers.addMarker(new OpenLayers.Marker(lonlat));
-
-		map.setCenter(lonlat, zoom);
-	}
-</script>
--->
-
-<!--
-<script>
-	var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
-	var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-	var extent = new OpenLayers.Bounds(-1.32,51.71,-1.18,51.80).transform(fromProjection,toProjection);
-	function init() {
-		var options = {
-			restrictedExtent : extent,
-			controls: [
-				new OpenLayers.Control.Navigation(),
-				new OpenLayers.Control.PanZoomBar(),
-				new OpenLayers.Control.Attribution()
-			]
-		};
-		var map = new OpenLayers.Map("map", options);
-		var newLayer = new OpenLayers.Layer.OSM(
-				"New Layer",
-				"URL_TO_TILES/${z}/${x}/${y}.png",
-				{zoomOffset: 13, resolutions: [19.1092570678711,9.55462853393555,4.77731426696777,2.38865713348389]}
-		);
-		map.addLayer(newLayer);
-		map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0); // 0=relative zoom level
-	}
-</script>
--->
-
-
-
 <script>
 	function init() {
 
@@ -153,32 +51,28 @@
 		});
 
 
-
 		/*
 		var newLayer = new ol.layer.Tile({
 			source: new ol.source.OSM()
 		});
 		*/
 
-
-		var iconFeatures = [];
-
-
-		var iconFeature = new ol.Feature({
-			geometry: new ol.geom.Point(ol.proj.transform([11.4, 55.3], 'EPSG:4326', 'EPSG:3857')),
-			name: 'Null Island',
-			population: 4000,
-			rainfall: 500
-		});
-		//iconFeatures.push(iconFeature);
-
-
+		//var iconFeatures = [];
 		var vectorSource = new ol.source.Vector({
-			features: iconFeatures //add an array of features
+			//features: iconFeatures //add an array of features
 		});
 
 		var iconStyle = new ol.style.Style({
-			image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+			image: new ol.style.Circle({
+				radius: 10,
+				fill: new ol.style.Fill({
+					color: '#0000FF'
+				}),
+				stroke: new ol.style.Stroke({
+					color: '#000000'
+			})}),
+			/*
+			image: new ol.style.Icon( ({
 				anchor: [0.5, 46],
 				anchorXUnits: 'fraction',
 				anchorYUnits: 'pixels',
@@ -186,6 +80,7 @@
 				src: 'icon.png'
 
 			})),
+			*/
 			text: new ol.style.Text({
 				text: "Wow such label",
 				offsetY: -25,
@@ -213,9 +108,8 @@
 		});
 
 
+		//vectorLayer.setOpacity(0.8);
 
-
-		vectorLayer.setOpacity(0.8);
 
 		//vectorLayer.getSource().clear();
 		//vectorLayer.getSource().addFeatures();
@@ -231,10 +125,7 @@
 		map.addInteraction(draw);
 		*/
 
-
-
-		// Add random markers
-		for (var i=0; i < Math.round(Math.random() * 50 + 1); i++) {
+		for (var i=0; i < Math.round(Math.random() * 500 + 1); i++) {
 			var iconFeature = new ol.Feature({
 				geometry: new ol.geom.Point(ol.proj.transform([Math.random()*360-180, Math.random()*180-90], 'EPSG:4326',   'EPSG:3857')),
 				name: 'Null Island ' + i,
@@ -244,8 +135,38 @@
 			vectorSource.addFeature(iconFeature);
 		}
 
+		//console.log('vectorSource', vectorSource.getFeatures());
 		setInterval(function() {
-			vectorSource.clear();
+			var featureList = vectorSource.getFeatures();
+			for (var i=0; i < featureList.length; i++) {
+				var feature = featureList[i];
+				//console.log('getStyle', feature.getStyle());
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						radius: Math.round(Math.random() * 30 + 1),
+						fill: new ol.style.Fill({
+							color: '#'+Math.floor(Math.random()*16777215).toString(16)
+						}),
+						stroke: new ol.style.Stroke({
+							color: '#'+Math.floor(Math.random()*16777215).toString(16)
+						})}),
+					text: new ol.style.Text({
+						text: "Changed: " + i,
+						offsetY: 0,
+						fill: new ol.style.Fill({
+							color: '#fff'
+						})
+					})
+				});
+				feature.setStyle(style);
+
+			}
+		}, 500);
+
+
+		/*
+		setInterval(function() {
+			//vectorSource.clear();
 			for (var i=0; i < Math.round(Math.random() * 50 + 1); i++) {
 				var iconFeature = new ol.Feature({
 					geometry: new ol.geom.Point(ol.proj.transform([Math.random()*360-180, Math.random()*180-90], 'EPSG:4326',   'EPSG:3857')),
@@ -255,93 +176,12 @@
 				});
 				vectorSource.addFeature(iconFeature);
 			}
-		}, 500);
+		}, 3000);
+		*/
 
 	}
-	/*
-	function init() {
-		var map = new OpenLayers.Map('map');
-		var mapnik         = new OpenLayers.Layer.OSM();
-		//var mapnik         	= new OpenLayers.Layer.OSM("Name", "http://example.com/", { 'type':'png', 'getURL':get_my_url });
-		var fromProjection 	= new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-		var toProjection   	= new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-		var position       	= new OpenLayers.LonLat(10.92405, 56.1).transform(fromProjection, toProjection);
-		var bounds			= new OpenLayers.Bounds(10.92405, 56.1, 10.92405, 56.1);
-		var zoom           	= 8;
-
-		//var proj = new OpenLayers.Projection("EPSG:4326");
-		//var point = new OpenLayers.LonLat(-71, 42);
-		//point.transform(proj, map.getProjectionObject());
-		//var layer = new OpenLayers.Layer.OSM();
-
-
-		map.addLayer(mapnik);
-		map.setCenter(position, zoom);
-		//map.zoomToMaxExtent();
-	}
-	function get_my_url (bounds) {
-		var res = this.map.getResolution();
-		var x = Math.round ((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
-		var y = Math.round ((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
-		var z = this.map.getZoom();
-
-		var path = z + "/" + x + "/" + y + "." + this.type;
-		var url = this.url;
-		if (url instanceof Array) {
-			url = this.selectUrl(path, url);
-		}
-		return url + path;
-
-	}
-	*/
 </script>
 
-
-<!--
-<script>
-	function init() {
-		var map = new OpenLayers.Map("map");
-		var mapnik         = new OpenLayers.Layer.OSM();
-		var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-		var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-		var position       = new OpenLayers.LonLat(13.41,52.52).transform( fromProjection, toProjection);
-
-
-		map.addLayer(mapnik);
-		map.setCenter(position, zoom );
-	}
-</script>
--->
-
-<!--
-<script>
-	map = new OpenLayers.Map("map");
-	map.addLayer(new OpenLayers.Layer.OSM());
-	map.zoomToMaxExtent();
-</script>
--->
-
-<!--
-<script>
-	map = new OpenLayers.Map("map");
-	map.addLayer(new OpenLayers.Layer.OSM());
-
-	var lonLat = new OpenLayers.LonLat( -0.1279688 ,51.5077286 )
-			.transform(
-			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-			map.getProjectionObject() // to Spherical Mercator Projection
-	);
-
-	var zoom=16;
-
-	var markers = new OpenLayers.Layer.Markers( "Markers" );
-	map.addLayer(markers);
-
-	markers.addMarker(new OpenLayers.Marker(lonLat));
-
-	map.setCenter (lonLat, zoom);
-</script>
--->
 
 <!--
 <script src="assets/scripts/main.js"></script>
