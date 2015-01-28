@@ -142,17 +142,25 @@
 				var feature = featureList[i];
 				//console.log('getStyle', feature.getStyle());
 				var style = new ol.style.Style({
+
 					image: new ol.style.Circle({
 						radius: Math.round(Math.random() * 20 + 1),
 						fill: new ol.style.Fill({
 							color: '#'+Math.floor(Math.random()*16777215).toString(16)
 						}),
 						stroke: new ol.style.Stroke({
-							color: '#'+Math.floor(Math.random()*16777215).toString(16),
-							width: 50,
-							opacity: 0.4
+							color: 'rgba(0, 0, 0, 0.7)',
+							width: 50
 						})
 					}),
+
+					image: new ol.style.Icon( ({
+						anchor: [0.5, 46],
+						anchorXUnits: 'fraction',
+						anchorYUnits: 'pixels',
+						opacity: 0.75,
+						src: 'icon_sta.png'
+					})),
 					text: new ol.style.Text({
 						text: "Changed: " + i,
 						offsetY: 0,
