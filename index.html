@@ -143,13 +143,16 @@
 				//console.log('getStyle', feature.getStyle());
 				var style = new ol.style.Style({
 					image: new ol.style.Circle({
-						radius: Math.round(Math.random() * 30 + 1),
+						radius: Math.round(Math.random() * 20 + 1),
 						fill: new ol.style.Fill({
 							color: '#'+Math.floor(Math.random()*16777215).toString(16)
 						}),
 						stroke: new ol.style.Stroke({
-							color: '#'+Math.floor(Math.random()*16777215).toString(16)
-						})}),
+							color: '#'+Math.floor(Math.random()*16777215).toString(16),
+							width: 50,
+							opacity: 0.4
+						})
+					}),
 					text: new ol.style.Text({
 						text: "Changed: " + i,
 						offsetY: 0,
