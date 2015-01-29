@@ -1,0 +1,41 @@
+{
+  "name": "Salespersons",
+  "salespersons": [
+    {
+      "id": 1,
+      "title": "SSØ",
+      "checkin": {
+        "date": 1422540115287,
+        "location": {
+          "title": "Bygma - Aarhus",
+          "lang": 10.534,
+          "long": 50.2323
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "THA",
+      "checkin": {
+        "date": 1422540052606,
+        "location": {
+          "title": "Silvan - Holstrebro",
+          "lang": 9.534,
+          "long": 51.2323
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "SSV",
+      "checkin": {
+        "date": 1422539906183,
+        "location": {
+          "title": "Grenå - Arkitekterne",
+          "lang": 10.234,
+          "long": 50.8323
+        }
+      }
+    }
+  ]
+}
