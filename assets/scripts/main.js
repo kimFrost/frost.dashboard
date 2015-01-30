@@ -16,8 +16,8 @@ window.requestAnimFrame = (function () {
     options: {
       debug: false,
       feedUrl: 'feed.json',
-      updateMarkerInterval: 1000,
-      requestInterval: 30000,
+      updateMarkerInterval: 1000, // 1 sec
+      requestInterval: 30000, // 30 sec
       checkin: {
         hotTime: (1000 * 60 * 30), // 30 minutes,
         maxRadius: 30,
