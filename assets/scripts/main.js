@@ -19,7 +19,7 @@ window.requestAnimFrame = (function () {
       updateMarkerInterval: 1000, // 1 sec
       requestInterval: 30000, // 30 sec
       checkin: {
-        hotTime: (1000 * 60 * 30), // 30 minutes,
+        hotTime: (1000 * 60 * 15), // 30 minutes,
         maxRadius: 30,
         minRadius: 0
       }
@@ -296,7 +296,7 @@ window.requestAnimFrame = (function () {
         */
       /*
        image: new ol.style.Icon( ({
-       anchor: [0.5, 46],
+       anchor: [0.5, 46],w
        anchorXUnits: 'fraction',
        anchorYUnits: 'pixels',
        opacity: 0.75,
