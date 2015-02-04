@@ -277,9 +277,14 @@ window.requestAnimFrame = (function () {
   var initMap = function() {
     var ol = window.ol;
     var raster = new ol.layer.Tile({
+      /*
       source: new ol.source.TileJSON({
-        url: 'http://api.tiles.mapbox.com/v3/mapbox.world-dark.jsonp'
+        //url: 'http://api.tiles.mapbox.com/v3/mapbox.world-dark.jsonp'
         //url: 'http://api.tiles.mapbox.com/v3/mapbox.geography-class.jsonp'
+      })
+      */
+      source: new ol.source.XYZ({
+        url: 'http://a.tiles.mapbox.com/v4/dmkjr.l4eh6baj/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZG1ranIiLCJhIjoiVWhtTFY4byJ9._T6QqteLqUPaGPTnoGhtJg'
       })
     });
 
